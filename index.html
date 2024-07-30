@@ -73,22 +73,36 @@
       document.getElementById("close-img").classList.remove("z-index");
     }
 
-    async function getData() {
-      const url = "data.json";
-      try {
+   // Define an asynchronous function named getData to fetch data from a JSON file
+async function getData() {
+    // Define the URL of the JSON file to be fetched
+    const url = "data.json";
+
+    try {
+        // Use the fetch API to request the data from the specified URL and wait for the response
         const response = await fetch(url);
+
+        // Check if the response is not OK (status code not in the range 200-299)
         if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
+            // Throw an error with the response status if the response is not OK
+            throw new Error(`Response status: ${response.status}`);
         }
 
+        // Parse the response body as JSON and wait for the result
         const json = await response.json();
-        console.log(json);
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
 
-    window.onload = getData();
+        // Log the parsed JSON data to the console
+        console.log(json);
+    } catch (error) {
+        // Catch any errors that occur during the fetch or JSON parsing
+        // Log the error message to the console
+        console.error(error.message);
+    }
+}
+
+// Set up an event listener for the window's load event and call the getData function when the window finishes loading
+window.onload = getData();
+
   </script>
 </body>
 
