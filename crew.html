@@ -126,41 +126,77 @@
   <!--JS-->
   <script>
     // Initialize the slide index to 0
-    var slideIndex = 0;
-    // Call the showSlides function to start the slideshow
-    showSlides();
+    // Declare a variable to keep track of the current slide index
+var slideIndex = 0;
 
-    // This function is for displaying the slides
-    function showSlides() {
-        var i;
-        // Get all elements with the class name "mySlides"
-        var slides = document.getElementsByClassName("mySlides");
-        // Get all elements with the class name "dot"
-        var dots = document.getElementsByClassName("dot");
+// Declare a variable to hold the timeout ID for the slideshow
+var slideTimeout;
 
-        // Loop through all slides and hide them
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
+// Function to show slides
+function showSlides() {
+    var i; // Declare a loop counter variable
 
-        // Increment the slide index
-        slideIndex++;
-        // If slideIndex is greater than the number of slides, reset it to 1
-        if (slideIndex > slides.length) { slideIndex = 1 }
+    // Get all elements with the class name "mySlides"
+    var slides = document.getElementsByClassName("mySlides");
 
-        // Loop through all dots and remove the class "active1"
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active1", "");
-        }
+    // Get all elements with the class name "dot"
+    var dots = document.getElementsByClassName("dot");
 
-        // Display the current slide (slideIndex-1 because array index starts at 0)
-        slides[slideIndex - 1].style.display = "block";
-        // Add the "active1" class to the current dot
-        dots[slideIndex - 1].className += " active1";
-
-        // Call the showSlides function again after 2 seconds (2000 milliseconds)
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    // Loop through all slides and hide them
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; // Hide each slide
     }
+
+    // Increment the slide index
+    slideIndex++;
+
+    // If slideIndex is greater than the number of slides, reset it to 1
+    if (slideIndex > slides.length) { slideIndex = 1 }
+
+    // Loop through all dots and remove the class "active1"
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active1", "");
+    }
+
+    // Display the current slide (slideIndex - 1 because array index starts at 0)
+    slides[slideIndex - 1].style.display = "block";
+
+    // Add the "active1" class to the current dot
+    dots[slideIndex - 1].className += " active1";
+
+    // Set a timeout to call the showSlides function again after 5 seconds (5000 milliseconds)
+    slideTimeout = setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+
+// Function to show a specific slide when a dot is clicked
+function currentSlide(n) {
+    // Clear the existing timeout to stop the automatic slideshow
+    clearTimeout(slideTimeout);
+
+    // Set the slideIndex to the specific slide number (n)
+    slideIndex = n;
+
+    // Call the showSlides function to update the display immediately
+    showSlides();
+}
+
+// Get all elements with the class name "dot"
+var dots = document.getElementsByClassName("dot");
+
+// Loop through all dots and add a click event listener to each one
+for (var i = 0; i < dots.length; i++) {
+    // Create a closure to capture the current value of i
+    (function(index) {
+        dots[index].addEventListener("click", function() {
+            // Call the currentSlide function with the clicked dot's index + 1
+            currentSlide(index + 1);
+        });
+    })(i);
+}
+
+// Start the slideshow by calling showSlides for the first time
+showSlides();
+
 
     // This function is for toggling the hamburger menu
     function myFirstfunction() {
