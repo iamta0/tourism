@@ -18,7 +18,7 @@
       <div class="container">
         <div class="header">
           <img class="img1" src="assest/images/shared/logo.svg" alt="logo img">
-          <img class="img2" src="./assest/images/Rectangle.png" alt="line img">
+          <img class="img2" src="assest/images/Rectangle.png" alt="line img">
           <span tabindex="0" class="span1">
             <img src="assest/images/shared/icon-hamburger.svg" onclick=" myFirstfunction()" class="ham-img" id="ham-img"
               alt="hamburger img">
@@ -66,43 +66,11 @@
       document.getElementById("close-img").classList.toggle("z-index");
       document.getElementById("ham-img").classList.toggle("hidden");
     }
-
     function mysecondfunction() {
       document.getElementById("ham-img").classList.remove("hidden")
       document.getElementById("h-menu").classList.remove("show");
       document.getElementById("close-img").classList.remove("z-index");
     }
-
-   // Define an asynchronous function named getData to fetch data from a JSON file
-async function getData() {
-    // Define the URL of the JSON file to be fetched
-    const url = "data.json";
-
-    try {
-        // Use the fetch API to request the data from the specified URL and wait for the response
-        const response = await fetch(url);
-
-        // Check if the response is not OK (status code not in the range 200-299)
-        if (!response.ok) {
-            // Throw an error with the response status if the response is not OK
-            throw new Error(`Response status: ${response.status}`);
-        }
-
-        // Parse the response body as JSON and wait for the result
-        const json = await response.json();
-
-        // Log the parsed JSON data to the console
-        console.log(json);
-    } catch (error) {
-        // Catch any errors that occur during the fetch or JSON parsing
-        // Log the error message to the console
-        console.error(error.message);
-    }
-}
-
-// Set up an event listener for the window's load event and call the getData function when the window finishes loading
-window.onload = getData();
-
   </script>
 </body>
 

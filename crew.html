@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html>x
 <html lang="en">
-
 <head>
   <link rel="icon" type="image/png" sizes="32x32" href="assest/images/favicon-32x32.png">
   <title>Frontend Mentor | Space tourism website</title>
@@ -9,21 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Bellefair&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assest/style.css">
 </head>
-
 <body>
-  <!--Background Crew-->
   <div class="bg-crew">
-    <!--Header-->
     <header>
       <div class="container">
         <div class="header">
           <img class="img1" src="assest/images/shared/logo.svg" alt="logo img">
           <img class="img2" src="assest/images/Rectangle.png" alt="line img">
           <span tabindex="0" class="span1">
-            <img src="assest/images/shared/icon-hamburger.svg" onclick=" myFirstfunction()" class="ham-img" id="ham-img"
-              alt="hamburger img">
-            <img src="assest/images/shared/icon-close.svg" onclick="mysecondfunction()" class="close-img" id="close-img"
-              alt="close img">
+            <img src="assest/images/shared/icon-hamburger.svg" onclick=" myFirstfunction()" class="ham-img" id="ham-img" alt="hamburger img">
+            <img src="assest/images/shared/icon-close.svg" onclick="mysecondfunction()" class="close-img" id="close-img" alt="close img">
           </span>
           <nav class="nav" id="h-menu">
             <ul class="subheading-3">
@@ -36,188 +30,15 @@
         </div>
       </div>
     </header>
-    <!--Main-->
     <main class="main-d">
-      <!--Crew-->
       <div class="container">
         <p class="p1 w-color margin-left"><strong>02</strong> meet your crew</p>
-        <div>
-          <!--Crew Slide-->
-          <div class="crew-content">
-            <div class="slideshow-container">
-              <div class="mySlides fade">
-                <div class="slide-flex">
-                  <div class="slidetext">
-                    <h4>Commander</h4>
-                    <h3>Douglas Hurley</h3>
-                    <p>
-                      Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
-                      and former NASA astronaut. He launched into space for the third time as
-                      commander of Crew Dragon Demo-2.
-                    </p>
-                  </div>
-                  <img src="assest/images/crew/image-douglas-hurley.png" alt="Commander Image"
-                    class="width-img d-bottom">
-                </div>
-              </div>
-
-              <div class="mySlides fade">
-                <div class="slide-flex">
-                  <div class="slidetext">
-                    <h4>Mission Specialist</h4>
-                    <h3>Mark Shuttleworth</h3>
-                    <p>
-                      Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind
-                      the Linux-based Ubuntu operating system. Shuttleworth became the first South
-                      African to travel to space as a space tourist.
-                    </p>
-                  </div>
-                  <img src="assest/images/crew/image-mark-shuttleworth.png" alt="Specialist Image"
-                    class="width-img m-bottom">
-                </div>
-              </div>
-
-              <div class="mySlides fade">
-                <div class="slide-flex">
-                  <div class="slidetext">
-                    <h4>Pilot</h4>
-                    <h3>Victor Glover</h3>
-                    <p>
-                      Pilot on the first operational flight of the SpaceX Crew Dragon to the
-                      International Space Station. Glover is a commander in the U.S. Navy where
-                      he pilots an F/A-18.He was a crew member of Expedition 64, and served as a
-                      station systems flight engineer.
-                    </p>
-                  </div>
-                  <img src="assest/images/crew/image-victor-glover.png" alt="Pilot Image" class="width-img v-bottom">
-                </div>
-              </div>
-
-              <div class="mySlides fade">
-                <div class="slide-flex">
-                  <div class="slidetext">
-                    <h4>Flight Engineer</h4>
-                    <h3>Anousheh Ansari</h3>
-                    <p>
-                      Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems.
-                      Ansari was the fourth self-funded space tourist, the first self-funded woman to
-                      fly to the ISS, and the first Iranian in space.
-                    </p>
-                  </div>
-                  <img src="assest/images/crew/image-anousheh-ansari.png" alt="Engineer Image"
-                    class="width-img a-bottom">
-                </div>
-              </div>
-
-              <br>
-
-              <div class="dot-slide">
-                <span class="dot active1" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-              </div>
-            </div>
-          </div>
+        <div id="crew-content">
+          <!-- Crew data will be dynamically inserted here -->
         </div>
       </div>
     </main>
   </div>
-  <!--JS-->
-  <script>
-    // Initialize the slide index to 0
-    // Declare a variable to keep track of the current slide index
-var slideIndex = 0;
-
-// Declare a variable to hold the timeout ID for the slideshow
-var slideTimeout;
-
-// Function to show slides
-function showSlides() {
-    var i; // Declare a loop counter variable
-
-    // Get all elements with the class name "mySlides"
-    var slides = document.getElementsByClassName("mySlides");
-
-    // Get all elements with the class name "dot"
-    var dots = document.getElementsByClassName("dot");
-
-    // Loop through all slides and hide them
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; // Hide each slide
-    }
-
-    // Increment the slide index
-    slideIndex++;
-
-    // If slideIndex is greater than the number of slides, reset it to 1
-    if (slideIndex > slides.length) { slideIndex = 1 }
-
-    // Loop through all dots and remove the class "active1"
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active1", "");
-    }
-
-    // Display the current slide (slideIndex - 1 because array index starts at 0)
-    slides[slideIndex - 1].style.display = "block";
-
-    // Add the "active1" class to the current dot
-    dots[slideIndex - 1].className += " active1";
-
-    // Set a timeout to call the showSlides function again after 5 seconds (5000 milliseconds)
-    slideTimeout = setTimeout(showSlides, 5000); // Change image every 5 seconds
-}
-
-// Function to show a specific slide when a dot is clicked
-function currentSlide(n) {
-    // Clear the existing timeout to stop the automatic slideshow
-    clearTimeout(slideTimeout);
-
-    // Set the slideIndex to the specific slide number (n)
-    slideIndex = n;
-
-    // Call the showSlides function to update the display immediately
-    showSlides();
-}
-
-// Get all elements with the class name "dot"
-var dots = document.getElementsByClassName("dot");
-
-// Loop through all dots and add a click event listener to each one
-for (var i = 0; i < dots.length; i++) {
-    // Create a closure to capture the current value of i
-    (function(index) {
-        dots[index].addEventListener("click", function() {
-            // Call the currentSlide function with the clicked dot's index + 1
-            currentSlide(index + 1);
-        });
-    })(i);
-}
-
-// Start the slideshow by calling showSlides for the first time
-showSlides();
-
-
-    // This function is for toggling the hamburger menu
-    function myFirstfunction() {
-        // Toggle (add/remove) the class "show" on the element with id "h-menu"
-        document.getElementById("h-menu").classList.toggle("show");
-        // Toggle (add/remove) the class "z-index" on the element with id "close-img"
-        document.getElementById("close-img").classList.toggle("z-index");
-        // Toggle (add/remove) the class "hidden" on the element with id "ham-img"
-        document.getElementById("ham-img").classList.toggle("hidden");
-    }
-
-    // This function is for closing the hamburger menu
-    function mysecondfunction() {
-        // Remove the class "hidden" from the element with id "ham-img"
-        document.getElementById("ham-img").classList.remove("hidden");
-        // Remove the class "show" from the element with id "h-menu"
-        document.getElementById("h-menu").classList.remove("show");
-        // Remove the class "z-index" from the element with id "close-img"
-        document.getElementById("close-img").classList.remove("z-index");
-    }
-</script>
+  <script src="crew.js"></script>
 </body>
-
 </html>
